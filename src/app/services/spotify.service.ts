@@ -4,7 +4,9 @@ import { map } from 'rxjs/operators';
 import configFile from '../../static/config.json';
 
 // TODO: Add NGRX
-@Injectable()
+@Injectable({
+  providedIn: 'root'
+})
 export class SpotifyService {
   constructor(private http: HttpClient) {}
 
@@ -28,5 +30,9 @@ export class SpotifyService {
     return this.getQuery(
       `search?query=${keyword}&type=artist&market=CO&offset=0&limit=15`
     ).pipe(map(data => data['artists'].items));
+  }
+
+  getArtist(id: string) {
+    return this.getQuery(`artists/${id}`);
   }
 }
