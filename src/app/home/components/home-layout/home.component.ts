@@ -7,7 +7,8 @@ import { SpotifyService } from 'src/app/services/spotify.service';
   styleUrls: ['./home.component.css']
 })
 export class HomeComponent {
-  newReleases: any[] = [];
+  newReleases: any[];
+
   constructor(private spotifyService: SpotifyService) {
     this.spotifyService
       .getNewReleases()

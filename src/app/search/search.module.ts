@@ -3,7 +3,7 @@ import { CommonModule } from '@angular/common';
 import { RouterModule, Routes } from '@angular/router';
 import { SpotifyService } from '../services/spotify.service';
 import { HttpClientModule } from '@angular/common/http';
-import { CardModule } from '../shared';
+import { CardModule, LoaderModule } from '../shared';
 import * as fromComponents from './components';
 
 const ROUTES: Routes = [
@@ -15,6 +15,7 @@ const ROUTES: Routes = [
   imports: [
     CommonModule,
     CardModule,
+    LoaderModule,
     HttpClientModule,
     RouterModule.forChild(ROUTES)
   ],
