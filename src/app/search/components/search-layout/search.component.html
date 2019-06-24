@@ -11,10 +11,7 @@
 </div>
 
 <div class="card-columns m-5">
-  <div *ngFor="let artist of artists" class="card">
-    <img [src]="artist.images | noImage" class="card-img-top" alt="..." />
-    <div class="card-body">
-      <h5 class="card-title">{{ artist.name }}</h5>
-    </div>
-  </div>
+  <ng-container *ngFor="let artist of artists">
+    <app-card [item]="artist"></app-card>
+  </ng-container>
 </div>

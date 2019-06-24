@@ -4,7 +4,7 @@ import { RouterModule, Routes } from '@angular/router';
 import * as fromComponents from './components';
 import { SpotifyService } from '../services/spotify.service';
 import { HttpClientModule } from '@angular/common/http';
-import { PipesModule } from '../shared';
+import { CardModule } from '../shared';
 
 const ROUTES: Routes = [{ path: '', component: fromComponents.HomeComponent }];
 
@@ -12,7 +12,7 @@ const ROUTES: Routes = [{ path: '', component: fromComponents.HomeComponent }];
   declarations: [...fromComponents.components],
   imports: [
     CommonModule,
-    PipesModule,
+    CardModule,
     HttpClientModule,
     RouterModule.forChild(ROUTES)
   ],

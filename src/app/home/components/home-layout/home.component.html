@@ -1,13 +1,5 @@
 <div class="card-columns">
-  <div *ngFor="let release of newReleases" class="card">
-    <img [src]="release.images | noImage" class="card-img-top" alt="..." />
-    <div class="card-body">
-      <h5 class="card-title">{{ release.name }}</h5>
-      <p class="card-text">
-        <span *ngFor="let artist of release.artists" class="badge badge-info">{{
-          artist.name
-        }}</span>
-      </p>
-    </div>
-  </div>
+  <ng-container *ngFor="let album of newReleases">
+    <app-card [item]="album"></app-card>
+  </ng-container>
 </div>
