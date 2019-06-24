@@ -10,6 +10,11 @@ export const ROUTES: Routes = [
     loadChildren: () =>
       import('../search/search.module').then(m => m.SearchModule)
   },
+  {
+    path: 'artist/:id',
+    loadChildren: () =>
+      import('../artist/artist.module').then(m => m.ArtistModule)
+  },
   { path: '', pathMatch: 'full', redirectTo: 'home' },
   { path: '**', pathMatch: 'full', redirectTo: 'home' }
 ];
