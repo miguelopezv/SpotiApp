@@ -3,7 +3,6 @@ import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { map } from 'rxjs/operators';
 import configFile from '../../static/config.json';
 
-// TODO: Refactor TOKEN and routes
 // TODO: Add NGRX
 @Injectable()
 export class SpotifyService {
