@@ -1,5 +1,6 @@
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
+import { map } from 'rxjs/operators';
 
 // TODO: Refactor TOKEN and routes
 // TODO: Add NGRX
@@ -13,9 +14,11 @@ export class SpotifyService {
         'Bearer BQDTQh-aEtm3VK58TL7-Lor7SSsZCdq0O-m_1PnJ8iMEnXNvD_zXD6E7BKgHEBnHXNancYS0kIpsvtRPhMM'
     });
 
-    return this.http.get('https://api.spotify.com/v1/browse/new-releases', {
-      headers
-    });
+    return this.http
+      .get('https://api.spotify.com/v1/browse/new-releases', {
+        headers
+      })
+      .pipe(map(data => data['albums'].items));
   }
 
   search(keyword: string) {
@@ -24,11 +27,11 @@ export class SpotifyService {
         'Bearer BQDTQh-aEtm3VK58TL7-Lor7SSsZCdq0O-m_1PnJ8iMEnXNvD_zXD6E7BKgHEBnHXNancYS0kIpsvtRPhMM'
     });
 
-    return this.http.get(
-      `https://api.spotify.com/v1/search?query=${keyword}&type=artist&market=CO&offset=0&limit=15`,
-      {
-        headers
-      }
-    );
+    return this.http
+      .get(
+        `https://api.spotify.com/v1/search?query=${keyword}&type=artist&market=CO&offset=0&limit=15`,
+        { headers }
+      )
+      .pipe(map(data => data['artists'].items));
   }
 }

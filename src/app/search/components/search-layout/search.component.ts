@@ -13,6 +13,6 @@ export class SearchComponent {
   search(keyword: string) {
     this.spotifyService
       .search(keyword)
-      .subscribe((data: any) => (this.artists = data.artists.items));
+      .subscribe((data: any) => (this.artists = data));
   }
 }
