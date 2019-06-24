@@ -6,8 +6,6 @@ import { AppComponent } from './app.component';
 import { ROUTES } from './app.routes';
 import { NavbarModule } from '../shared';
 
-// TODO: Lazy loading
-
 @NgModule({
   declarations: [AppComponent],
   imports: [
