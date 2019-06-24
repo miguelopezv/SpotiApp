@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { map } from 'rxjs/operators';
+import configFile from '../../static/config.json';
 
 // TODO: Refactor TOKEN and routes
 // TODO: Add NGRX
@@ -8,30 +9,25 @@ import { map } from 'rxjs/operators';
 export class SpotifyService {
   constructor(private http: HttpClient) {}
 
-  getNewReleases() {
+  getQuery(query: string) {
+    const url = `${configFile.api.url}${query}`;
+
     const headers = new HttpHeaders({
-      Authorization:
-        'Bearer BQDTQh-aEtm3VK58TL7-Lor7SSsZCdq0O-m_1PnJ8iMEnXNvD_zXD6E7BKgHEBnHXNancYS0kIpsvtRPhMM'
+      Authorization: configFile.api.token
     });
 
-    return this.http
-      .get('https://api.spotify.com/v1/browse/new-releases', {
-        headers
-      })
-      .pipe(map(data => data['albums'].items));
+    return this.http.get(url, { headers });
+  }
+
+  getNewReleases() {
+    return this.getQuery('browse/new-releases').pipe(
+      map(data => data['albums'].items)
+    );
   }
 
   search(keyword: string) {
-    const headers = new HttpHeaders({
-      Authorization:
-        'Bearer BQDTQh-aEtm3VK58TL7-Lor7SSsZCdq0O-m_1PnJ8iMEnXNvD_zXD6E7BKgHEBnHXNancYS0kIpsvtRPhMM'
-    });
-
-    return this.http
-      .get(
-        `https://api.spotify.com/v1/search?query=${keyword}&type=artist&market=CO&offset=0&limit=15`,
-        { headers }
-      )
-      .pipe(map(data => data['artists'].items));
+    return this.getQuery(
+      `search?query=${keyword}&type=artist&market=CO&offset=0&limit=15`
+    ).pipe(map(data => data['artists'].items));
   }
 }
