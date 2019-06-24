@@ -4,6 +4,7 @@ import { RouterModule, Routes } from '@angular/router';
 import * as fromComponents from './components';
 import { SpotifyService } from '../services/spotify.service';
 import { HttpClientModule } from '@angular/common/http';
+import { PipesModule } from '../shared';
 
 const ROUTES: Routes = [
   { path: '', component: fromComponents.SearchComponent }
@@ -11,7 +12,12 @@ const ROUTES: Routes = [
 
 @NgModule({
   declarations: [...fromComponents.components],
-  imports: [CommonModule, HttpClientModule, RouterModule.forChild(ROUTES)],
+  imports: [
+    CommonModule,
+    PipesModule,
+    HttpClientModule,
+    RouterModule.forChild(ROUTES)
+  ],
   providers: [SpotifyService]
 })
 export class SearchModule {}
