@@ -1,4 +1,6 @@
-<app-loader *ngIf="!artist; else artistTemplate"></app-loader>
+<app-loader *ngIf="!artist && !error; else artistTemplate"></app-loader>
+
+<app-error-handler *ngIf="error" [error]="error"></app-error-handler>
 
 <ng-template #artistTemplate>
   <div class="row animated fadeIn">
@@ -18,7 +20,7 @@
     </div>
   </div>
 
-  <div class="row  m-5">
+  <div class="row  mt-5">
     <div class="col">
       <table class="table">
         <thead>
@@ -40,7 +42,9 @@
             </td>
             <td>{{ track.album.name }}</td>
             <td>{{ track.name }}</td>
-            <td><audio [src]="track.preview_url" controls></audio></td>
+            <td>
+              <audio [src]="track.preview_url" controls></audio>
+            </td>
           </tr>
         </tbody>
       </table>

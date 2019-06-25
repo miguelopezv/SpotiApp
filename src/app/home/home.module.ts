@@ -2,7 +2,7 @@ import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { RouterModule, Routes } from '@angular/router';
 import * as fromComponents from './components';
-import { CardModule, LoaderModule } from '../shared';
+import { CardModule, LoaderModule, ErrorHandlerModule } from '../shared';
 
 const ROUTES: Routes = [{ path: '', component: fromComponents.HomeComponent }];
 
@@ -12,6 +12,7 @@ const ROUTES: Routes = [{ path: '', component: fromComponents.HomeComponent }];
     CommonModule,
     CardModule,
     LoaderModule,
+    ErrorHandlerModule,
     RouterModule.forChild(ROUTES)
   ]
 })

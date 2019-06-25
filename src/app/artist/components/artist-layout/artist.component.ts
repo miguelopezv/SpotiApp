@@ -10,6 +10,8 @@ import { SpotifyService } from 'src/app/services/spotify.service';
 export class ArtistComponent {
   artist: any;
   topTracks: any[];
+  error: string;
+
   constructor(
     private router: ActivatedRoute,
     private spotifyService: SpotifyService
@@ -23,12 +25,15 @@ export class ArtistComponent {
   getArtist(id: string) {
     this.spotifyService
       .getArtist(id)
-      .subscribe(artist => (this.artist = artist));
+      .subscribe(artist => (this.artist = artist), err => (this.error = err));
   }
 
   getTopTracks(id: string) {
     this.spotifyService
       .getTopTracks(id)
-      .subscribe(topTracks => (this.topTracks = topTracks));
+      .subscribe(
+        topTracks => (this.topTracks = topTracks),
+        err => (this.error = err)
+      );
   }
 }

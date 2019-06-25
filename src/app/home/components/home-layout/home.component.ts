@@ -8,10 +8,14 @@ import { SpotifyService } from 'src/app/services/spotify.service';
 })
 export class HomeComponent {
   newReleases: any[];
+  error: any;
 
   constructor(private spotifyService: SpotifyService) {
     this.spotifyService
       .getNewReleases()
-      .subscribe((data: any) => (this.newReleases = data));
+      .subscribe(
+        (data: any) => (this.newReleases = data),
+        (err: any) => (this.error = err.error.error.message)
+      );
   }
 }

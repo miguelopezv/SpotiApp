@@ -10,7 +10,9 @@
   </div>
 </div>
 
-<app-loader class="mt-5" *ngIf="loading; else cards"></app-loader>
+<app-loader *ngIf="loading && !error; else cards"></app-loader>
+
+<app-error-handler *ngIf="error" [error]="error"></app-error-handler>
 
 <ng-template #cards>
   <div class="card-columns mt-5">

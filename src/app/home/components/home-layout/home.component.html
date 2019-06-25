@@ -1,4 +1,6 @@
-<app-loader *ngIf="!newReleases; else cards"></app-loader>
+<app-loader *ngIf="!newReleases && !error; else cards"></app-loader>
+
+<app-error-handler *ngIf="error" [error]="error"></app-error-handler>
 
 <ng-template #cards>
   <div class="card-columns">
