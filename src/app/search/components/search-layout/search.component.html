@@ -10,10 +10,10 @@
   </div>
 </div>
 
-<app-loader class="m-5" *ngIf="loading; else cards"></app-loader>
+<app-loader class="mt-5" *ngIf="loading; else cards"></app-loader>
 
 <ng-template #cards>
-  <div class="card-columns m-5">
+  <div class="card-columns mt-5">
     <ng-container *ngFor="let artist of artists">
       <app-card [item]="artist"></app-card>
     </ng-container>
