@@ -1,5 +1,7 @@
 # SpotiApp
 
+[![CircleCI](https://circleci.com/gh/miguelopezv/SpotiApp/tree/master.svg?style=svg)](https://circleci.com/gh/miguelopezv/SpotiApp/tree/master)
+
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 8.0.3.
 
 ## Development server
