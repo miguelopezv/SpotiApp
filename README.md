@@ -4,7 +4,11 @@ This project was generated with [Angular CLI](https://github.com/angular/angular
 
 ## Development server
 
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The app will automatically reload if you change any of the source files.
+You can find the project running on `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The app will automatically reload if you change any of the source files.
+
+## Production server
+
+You can find the project running on `https://spotiappweb.herokuapp.com/`. Keep in mind this is a free Heroku instance so you should do one first request to awake the server [and the backend] and then you can browse the site.
 
 ## Code scaffolding
 
