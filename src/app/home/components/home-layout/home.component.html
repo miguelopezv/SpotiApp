@@ -1,0 +1,11 @@
+<app-loader *ngIf="!newReleases && !error; else cards"></app-loader>
+
+<app-error-handler *ngIf="error" [error]="error"></app-error-handler>
+
+<ng-template #cards>
+  <div class="card-columns">
+    <ng-container *ngFor="let album of newReleases">
+      <app-card [item]="album"></app-card>
+    </ng-container>
+  </div>
+</ng-template>
