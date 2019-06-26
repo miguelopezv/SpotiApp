@@ -1,0 +1,23 @@
+<div class="row">
+  <div class="col">
+    <input
+      #keyword
+      type="text"
+      (keyup)="search(keyword.value)"
+      class="form-control"
+      placeholder="Search artist"
+    />
+  </div>
+</div>
+
+<app-loader *ngIf="loading && !error; else cards"></app-loader>
+
+<app-error-handler *ngIf="error" [error]="error"></app-error-handler>
+
+<ng-template #cards>
+  <div class="card-columns mt-5">
+    <ng-container *ngFor="let artist of artists">
+      <app-card [item]="artist"></app-card>
+    </ng-container>
+  </div>
+</ng-template>
