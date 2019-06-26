@@ -14,10 +14,18 @@ export class SpotifyService {
     const url = `${configFile.api.url}${query}`;
 
     const headers = new HttpHeaders({
-      Authorization: configFile.api.token
+      Authorization: sessionStorage.getItem('token')
     });
 
     return this.http.get(url, { headers });
+  }
+
+  getToken(): any {
+    return this.http.get(configFile.api.herokuUrl).pipe(
+      map((data: any) => {
+        sessionStorage.setItem('token', `Bearer ${data.access_token}`);
+      })
+    );
   }
 
   getNewReleases() {
